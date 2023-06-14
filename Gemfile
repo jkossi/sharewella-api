@@ -12,6 +12,22 @@ gem "pg", "~> 1.5.3"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.6.5"
 
+# Authentication & Authorization with JWT
+gem "devise", "~> 4.9.2"
+gem "devise-jwt", "~> 0.11.0"
+
+# Soft Deletion
+gem "discard", "~> 1.2.1"
+
+# Validations and phone number formatting.
+gem "phony_rails", "~> 0.15.0"
+
+# Fast, simple and easy to use serializer
+gem "jsonapi-serializer", "~> 2.2.0"
+
+# Catch unsafe migrations in development
+gem "strong_migrations", "~> 1.4.4"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

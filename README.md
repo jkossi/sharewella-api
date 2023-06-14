@@ -5,20 +5,26 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+# Ruby version
 
-* System dependencies
+ruby 3.2.2
 
-* Configuration
+# System dependencies
 
-* Database creation
+# Configuration
 
-* Database initialization
+# Database creation
 
-* How to run the test suite
+```ruby
+bin/rails db:create
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Database initialization
 
-* Deployment instructions
+# How to run the test suite
 
-* ...
+# Services (job queues, cache servers, search engines, etc.)
+
+# Deployment instructions
+
+# Others

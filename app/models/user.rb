@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::Allowlist
   include Discard::Model
 
+  attr_accessor :phone_number_normalized
+
   devise :database_authenticatable,
          :trackable,
          :recoverable,
@@ -23,7 +25,7 @@ class User < ApplicationRecord
 
   validates :name,
     presence: true,
-    format: { with: NAME_REGEX, if: ->(user) { user.name.present?} }
+    format: { with: NAME_REGEX, if: ->(user) { user.name.present? } }
 
   validates :pin,
     length: { minimum: 4, maximum: 4, if: ->(user) { user.pin.present? } },
@@ -36,4 +38,7 @@ class User < ApplicationRecord
   validates :phone_number,
     presence: true,
     uniqueness: { conditions: -> { where(discarded_at: nil) } }
+
+  phony_normalize :phone_number, as: :phone_number_normalized, default_country_code: 'GH'
+  validates_plausible_phone :phone_number_normalized, if: :phone_number?
 end

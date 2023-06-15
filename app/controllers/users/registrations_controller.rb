@@ -21,8 +21,8 @@ module Users
 
     def register_failed(resource)
       render json: {
-        message: I18n.t('devise.errors.not_saved', resource: resource.class.name, count: resource.errors.messages.size),
-        errors: resource.errors.full_messages
+        message: I18n.t('errors.messages.not_saved', resource: resource.class.name, count: resource.errors.size),
+        errors: resource.errors.messages
       }, status: :unprocessable_entity
     end
   end

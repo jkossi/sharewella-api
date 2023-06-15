@@ -4,7 +4,7 @@ StrongMigrations.start_after = 20230613194914
 # Set timeouts for migrations
 # If you use PgBouncer in transaction mode, delete these lines and set timeouts on the database user
 StrongMigrations.lock_timeout = 10.seconds
-StrongMigrations.statement_timeout = 1.hour
+StrongMigrations.statement_timeout = 60.seconds
 
 # Analyze tables after indexes are added
 # Outdated statistics can sometimes hurt performance

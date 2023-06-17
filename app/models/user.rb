@@ -23,6 +23,9 @@ class User < ApplicationRecord
 
   default_scope { kept }
 
+  validates :password,
+    presence: true,
+    length: { minimum: 8, maximum: 128, if: ->(user) { user.password.present? } }
   validates :name,
     presence: true,
     format: { with: NAME_REGEX, if: ->(user) { user.name.present? } }

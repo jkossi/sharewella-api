@@ -46,6 +46,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_model_otp (2.3.2)
+      activemodel
+      rotp (~> 6.2.0)
     activejob (7.0.5)
       activesupport (= 7.0.5)
       globalid (>= 0.3.6)
@@ -179,6 +182,7 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rotp (6.2.2)
     strong_migrations (1.4.4)
       activerecord (>= 5.2)
     thor (1.2.2)
@@ -201,6 +205,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  active_model_otp (~> 2.3.2)
   bootsnap (~> 1.16.0)
   debug (~> 1.8.0)
   devise (~> 4.9.2)

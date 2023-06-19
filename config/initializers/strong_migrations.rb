@@ -12,7 +12,7 @@ StrongMigrations.auto_analyze = true
 
 # Set the version of the production database
 # so the right checks are run in development
-StrongMigrations.target_version = 14
+StrongMigrations.target_version = 15
 
 StrongMigrations.alphabetize_schema = true
 
@@ -29,4 +29,4 @@ StrongMigrations.alphabetize_schema = true
 
 # Make some operations safe by default
 # See https://github.com/ankane/strong_migrations#safe-by-default
-# StrongMigrations.safe_by_default = true
+StrongMigrations.safe_by_default = true

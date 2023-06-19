@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::Allowlist
   include Discard::Model
-
-  attr_accessor :phone_number_normalized
+  include PhoneNumberValidatable
 
   devise :database_authenticatable,
          :trackable,
@@ -26,6 +25,7 @@ class User < ApplicationRecord
   validates :password,
     presence: true,
     length: { minimum: 8, maximum: 128, if: ->(user) { user.password.present? } }
+
   validates :name,
     presence: true,
     format: { with: NAME_REGEX, if: ->(user) { user.name.present? } }

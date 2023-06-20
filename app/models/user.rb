@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::Allowlist
   include Discard::Model
@@ -29,16 +31,16 @@ class User < ApplicationRecord
 
   validates :pin,
     length: { minimum: 4, maximum: 4, if: ->(user) { user.pin.present? } },
-    format: { with: PIN_REGEX, allow_blank: true}
+    format: { with: PIN_REGEX, allow_nil: true}
 
   validates :email,
-    format: { with: EMAIL_REGEX, allow_blank: true },
-    uniqueness: { allow_blank: true, case_sensitive: false, conditions: -> { where(discarded_at: nil) } }
+    format: { with: EMAIL_REGEX, allow_nil: true },
+    uniqueness: { allow_nil: true, case_sensitive: false, conditions: -> { where(discarded_at: nil) } }
 
   validates :phone_number,
     presence: true,
     uniqueness: { conditions: -> { where(discarded_at: nil) } }
 
   phony_normalize :phone_number, as: :phone_number_normalized, default_country_code: 'GH'
-  validates_plausible_phone :phone_number_normalized, if: :phone_number?
+  validates_plausible_phone :phone_number_normalized, presence: true, if: :phone_number?
 end

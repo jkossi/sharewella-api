@@ -23,6 +23,8 @@ class User < ApplicationRecord
 
   encrypts :pin
 
+  has_many :orders, dependent: :destroy
+  
   default_scope { kept }
 
   validates :name,

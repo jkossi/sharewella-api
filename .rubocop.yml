@@ -1,0 +1,64 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-factory_bot
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "**/bin/*"
+    - db/migrate/*.rb
+
+Layout/LineLength:
+  Enabled: true
+  Exclude:
+    - config/initializers/devise.rb
+
+Lint/MixedCaseRange: # new in 1.53
+  Enabled: true
+
+Lint/RedundantRegexpQuantifiers: # new in 1.53
+  Enabled: true
+
+Style/RedundantArrayConstructor: # new in 1.52
+  Enabled: true
+
+Style/RedundantCurrentDirectoryInPath: # new in 1.53
+  Enabled: true
+
+Style/RedundantFilterChain: # new in 1.52
+  Enabled: true
+
+Style/RedundantRegexpArgument: # new in 1.53
+  Enabled: true
+
+Style/RedundantRegexpConstructor: # new in 1.52
+  Enabled: true
+
+Style/ReturnNilInPredicateMethodDefinition: # new in 1.53
+  Enabled: true
+
+Style/YAMLFileRead: # new in 1.53
+  Enabled: true
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  Exclude:
+   - spec/**/*
+   - db/migrate/*.rb
+
+RSpec/Rails/InferredSpecType:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false

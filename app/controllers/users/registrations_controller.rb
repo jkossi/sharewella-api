@@ -13,17 +13,27 @@ module Users
     end
 
     def register_success(resource)
-      render json: {
-        message: I18n.t('devise.sessions.signed_in'),
-        data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
-      }, status: :ok
+      render(
+        json: {
+          message: I18n.t("devise.sessions.signed_in"),
+          data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
+        },
+        status: :ok,
+      )
     end
 
     def register_failed(resource)
-      render json: {
-        message: I18n.t('errors.messages.not_saved', resource: resource.class.name, count: resource.errors.size),
-        errors: resource.errors.messages
-      }, status: :unprocessable_entity
+      render(
+        json: {
+          message: I18n.t(
+            "errors.messages.not_saved",
+            resource: resource.class.name,
+            count: resource.errors.size,
+          ),
+          errors: resource.errors.messages,
+        },
+        status: :unprocessable_entity,
+      )
     end
   end
 end

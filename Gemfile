@@ -31,7 +31,7 @@ gem "jsonapi-serializer", "~> 2.2.0"
 gem "strong_migrations", "~> 1.4.4"
 
 # Adds methods to set and authenticate against one time passwords 2FA
-gem 'active_model_otp', '~> 2.3.2'
+gem "active_model_otp", "~> 2.3.2"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"

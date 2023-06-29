@@ -69,6 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_163755) do
   end
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
-  add_foreign_key "phone_number_verfications", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "phone_number_verfications", "users"
 end

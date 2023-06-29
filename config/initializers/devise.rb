@@ -16,21 +16,21 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '39576c235e0e06fc50921604fe1b5e59f34cd8d52a97df2cd3ecb8ba4e7b96bf7b2a124f7e964f76b196a704d175968e78302f3144fa6ea79dc6dac19d889a85'
 
-   # Devise jwt
-   config.jwt do |jwt|
+  # Devise jwt
+  config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.secret_key_base!
     jwt.expiration_time = 8.weeks.to_i
     jwt.dispatch_requests = [
-      ['POST', %r{^/auth/login$}],
-      ['POST', %r{^/auth/account$}]
+      ["POST", %r{^/auth/login$}],
+      ["POST", %r{^/auth/account$}],
     ]
     jwt.revocation_requests = [
-      ['DELETE', %r{^/auth/logout$}]
+      ["DELETE", %r{^/auth/logout$}],
     ]
   end
 
   config.warden do |warden|
-    warden.scope_defaults :user, store: false
+    warden.scope_defaults(:user, store: false)
   end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -40,7 +40,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'notifications@sharewella.com'
+  config.mailer_sender = "notifications@sharewella.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -52,7 +52,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is

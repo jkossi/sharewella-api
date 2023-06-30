@@ -46,6 +46,4 @@ RSpec.describe Package, type: :model do
       expect(build(:package, retail_price: 50)).to be_valid
     end
   end
-
-
 end

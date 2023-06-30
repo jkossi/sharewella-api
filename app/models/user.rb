@@ -7,12 +7,12 @@ class User < ApplicationRecord
   attr_accessor :phone_number_normalized
 
   devise :database_authenticatable,
-         :trackable,
-         :recoverable,
-         :jwt_authenticatable,
-         :registerable,
-         authentication_keys: %i(phone_number),
-         jwt_revocation_strategy: self
+    :trackable,
+    :recoverable,
+    :jwt_authenticatable,
+    :registerable,
+    authentication_keys: [:phone_number],
+    jwt_revocation_strategy: self
 
   # Avoid Devise authenticating users using session
   self.skip_session_storage = [:http_auth, :params_auth]
@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :packages, dependent: :destroy
-  
+
   default_scope { kept }
 
   validates :name,
@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   validates :pin,
     length: { minimum: 4, maximum: 4, if: ->(user) { user.pin.present? } },
-    format: { with: PIN_REGEX, allow_nil: true}
+    format: { with: PIN_REGEX, allow_nil: true }
 
   validates :email,
     format: { with: EMAIL_REGEX, allow_nil: true },
@@ -44,6 +44,6 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: { conditions: -> { where(discarded_at: nil) } }
 
-  phony_normalize :phone_number, as: :phone_number_normalized, default_country_code: 'GH'
+  phony_normalize :phone_number, as: :phone_number_normalized, default_country_code: "GH"
   validates_plausible_phone :phone_number_normalized, presence: true, if: :phone_number?
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_163755) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_000705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_163755) do
     t.bigint "user_id", null: false
     t.index ["discarded_at"], name: "index_orders_on_discarded_at"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "packages", force: :cascade do |t|
+    t.datetime "available_at"
+    t.integer "available_slots"
+    t.datetime "created_at", null: false
+    t.bigint "creator_id"
+    t.datetime "delivery_at"
+    t.string "description"
+    t.datetime "discarded_at"
+    t.datetime "expires_at"
+    t.integer "frequency", default: 0
+    t.text "long_description"
+    t.string "name", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "GHS", null: false
+    t.boolean "public", default: false
+    t.integer "retail_price_cents", default: 0, null: false
+    t.string "retail_price_currency", default: "GHS", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_packages_on_creator_id"
+    t.index ["discarded_at"], name: "index_packages_on_discarded_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +81,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_163755) do
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
   add_foreign_key "orders", "users"
+  add_foreign_key "packages", "users", column: "creator_id"
 end

@@ -24,6 +24,7 @@ class User < ApplicationRecord
   encrypts :pin
 
   has_many :orders, dependent: :destroy
+  has_many :packages, inverse_of: "creator", dependent: :destroy
 
   default_scope { kept }
 

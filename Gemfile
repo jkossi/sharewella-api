@@ -28,6 +28,9 @@ gem "jsonapi-serializer", "~> 2.2.0"
 # Catch unsafe migrations in development
 gem "strong_migrations", "~> 1.4.4"
 
+# Use Money-Rails
+gem 'money-rails', '~>1.12'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

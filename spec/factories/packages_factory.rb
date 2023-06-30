@@ -4,5 +4,6 @@ FactoryBot.define do
   factory :package do
     creator factory: :user
     name { "Jumbo size Indomie" }
+    frequency { :daily }
   end
 end

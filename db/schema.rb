@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_000705) do
     t.string "description"
     t.datetime "discarded_at"
     t.datetime "expires_at"
-    t.integer "frequency"
+    t.integer "frequency", default: 0
     t.text "long_description"
     t.string "name", null: false
     t.integer "price_cents", default: 0, null: false

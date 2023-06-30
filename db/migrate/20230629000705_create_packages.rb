@@ -6,7 +6,7 @@ class CreatePackages < ActiveRecord::Migration[7.0]
       t.text :long_description
       t.boolean :public, default: false
       t.monetize :price
-      t.integer :frequency
+      t.integer :frequency, default: 0
       t.datetime :delivery_at
       t.integer :available_slots
       t.datetime :discarded_at 

@@ -12,15 +12,11 @@ StrongMigrations.statement_timeout = 60.seconds
 # Outdated statistics can sometimes hurt performance
 StrongMigrations.auto_analyze = true
 
-# Set the version of the production database
-# so the right checks are run in development
-StrongMigrations.target_version = 14
-
 StrongMigrations.alphabetize_schema = true
 
 # Set the version of the production database
 # so the right checks are run in development
-# StrongMigrations.target_version = 10
+StrongMigrations.target_version = 15
 
 # Add custom checks
 # StrongMigrations.add_check do |method, args|
@@ -31,4 +27,4 @@ StrongMigrations.alphabetize_schema = true
 
 # Make some operations safe by default
 # See https://github.com/ankane/strong_migrations#safe-by-default
-# StrongMigrations.safe_by_default = true
+StrongMigrations.safe_by_default = true

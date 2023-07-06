@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Package < ApplicationRecord
+class Product < ApplicationRecord
   enum :frequency,
     {
       daily: 0,

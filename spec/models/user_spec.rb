@@ -100,7 +100,7 @@ RSpec.describe User, type: :model do
         before { existing_user.discard }
 
         it "ignores soft deleted users" do
-          new_user = build(:user, email: email)
+          new_user = build(:user, email: email, phone_number: "0201337888")
 
           expect(new_user).to be_valid
 

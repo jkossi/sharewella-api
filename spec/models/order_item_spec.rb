@@ -20,4 +20,20 @@ RSpec.describe OrderItem, type: :model do
       expect(build(:order_item, quantity: 1)).to be_valid
     end
   end
+
+  describe "product uniqueness" do
+    it "allows a product to be added to the order only once" do
+      existing_order_item = create(:order_item)
+      new_order_item = build(:order_item, order: existing_order_item.order, product: existing_order_item.product)
+
+      expect(new_order_item).not_to be_valid
+    end
+
+    it "allows multiple unique products to be added to the order" do
+      existing_order_item = create(:order_item)
+      new_order_item = build(:order_item, order: existing_order_item.order)
+
+      expect(new_order_item).to be_valid
+    end
+  end
 end

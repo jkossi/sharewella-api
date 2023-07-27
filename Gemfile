@@ -36,6 +36,9 @@ gem "active_model_otp", "~> 2.3.2"
 # HTTP/REST API client library.
 gem "faraday", "~> 2.7.9"
 
+# Use Money-Rails
+gem "money-rails", "~> 1.15.0"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

@@ -1,6 +1,6 @@
 ## Why?
 
-Resolves [[SW-XXXX]](https://github.com/users/jkossi/projects/3?pane=issue&itemId=XXXXXXX)
+Resolves [[SWB-XXXX]](https://github.com/users/jkossi/projects/3?pane=issue&itemId=XXXXXXX)
 
 What is the problem this PR attempts to solve, and why is it important? Fixing a bug? Explain the problem you're solving. Laying a foundation for future work? Explain how this fits into the bigger picture. Don't forget to link to the Shortcut issue above.
 

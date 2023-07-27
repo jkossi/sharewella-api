@@ -33,6 +33,9 @@ gem "strong_migrations", "~> 1.4.4"
 # Adds methods to set and authenticate against one time passwords 2FA
 gem "active_model_otp", "~> 2.3.2"
 
+# HTTP/REST API client library.
+gem "faraday", "~> 2.7.9"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_one :basket, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :packages, inverse_of: "creator", dependent: :destroy
+  has_many :products, inverse_of: "creator", foreign_key: "creator_id", dependent: :destroy
 
   default_scope { kept }
 
@@ -46,5 +46,5 @@ class User < ApplicationRecord
 
   validates :phone_number,
     presence: true,
-    uniqueness: { conditions: -> { where(discarded_at: nil) } }
+    uniqueness: { case_sensitive: false, conditions: -> { where(discarded_at: nil) } }
 end

@@ -1,4 +1,4 @@
 ---
 en:
   messaging:
-    otp_sms: Your OTP code is %{code}. This code is valid for 10 minutes.
+    confirmation_code: Your confirmation code is %{code}. This is valid for 10 minutes.

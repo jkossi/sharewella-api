@@ -12,7 +12,7 @@ module Messaging
     end
 
     def perform
-      response = Messaging::Termii.send_sms(phone_number, sms: I18n.t("messaging.otp_sms", code: code))
+      response = Messaging::Termii.send_sms(phone_number, sms: I18n.t("messaging.confirmation_code", code: code))
 
       fail!(response[:message]) unless response[:success]
     end

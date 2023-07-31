@@ -63,6 +63,11 @@ gem "bootsnap", "~> 1.16.0", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "rack-cors", "~> 2.0.1"
 
+group :test do
+  # Provides RSpec and Minitest compatible one-liners to test common Rails functionality.
+  gem "shoulda-matchers", "~> 5.3.0"
+end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", "~> 1.8.0", platforms: [:mri, :mingw, :x64_mingw]

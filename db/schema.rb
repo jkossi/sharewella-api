@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_121645) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_162509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_121645) do
   end
 
   create_table "phone_number_verifications", force: :cascade do |t|
+    t.string "country_code", default: "GH"
     t.datetime "created_at", null: false
     t.integer "last_otp_at"
     t.string "otp_secret_key"

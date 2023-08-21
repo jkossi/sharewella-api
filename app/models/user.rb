@@ -3,8 +3,7 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::Allowlist
   include Discard::Model
-
-  attr_accessor :phone_number_normalized
+  include PhoneNumberValidatable
 
   devise :database_authenticatable,
     :trackable,
@@ -25,9 +24,13 @@ class User < ApplicationRecord
 
   has_one :basket, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_many :packages, inverse_of: "creator", dependent: :destroy
+  has_many :products, inverse_of: "creator", foreign_key: "creator_id", dependent: :destroy
 
   default_scope { kept }
+
+  validates :password,
+    presence: true,
+    length: { minimum: 8, maximum: 128, if: ->(user) { user.password.present? } }
 
   validates :name,
     presence: true,
@@ -43,8 +46,5 @@ class User < ApplicationRecord
 
   validates :phone_number,
     presence: true,
-    uniqueness: { conditions: -> { where(discarded_at: nil) } }
-
-  phony_normalize :phone_number, as: :phone_number_normalized, default_country_code: "GH"
-  validates_plausible_phone :phone_number_normalized, presence: true, if: :phone_number?
+    uniqueness: { case_sensitive: false, conditions: -> { where(discarded_at: nil) } }
 end

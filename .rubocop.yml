@@ -11,7 +11,12 @@ AllCops:
   NewCops: enable
   Exclude:
     - "**/bin/*"
+    - db/schema.rb
     - db/migrate/*.rb
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/services/**/*"
 
 Layout/LineLength:
   Enabled: true

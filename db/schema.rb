@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_121645) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_162509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_121645) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "phone_number_verifications", force: :cascade do |t|
+    t.string "country_code", default: "GH"
+    t.datetime "created_at", null: false
+    t.integer "last_otp_at"
+    t.string "otp_secret_key"
+    t.string "phone_number", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["phone_number"], name: "index_phone_number_verifications_on_phone_number", unique: true
+    t.index ["user_id"], name: "index_phone_number_verifications_on_user_id", unique: true
+  end
+
   create_table "products", force: :cascade do |t|
     t.datetime "available_at"
     t.integer "available_slots"
@@ -117,5 +129,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_121645) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "phone_number_verifications", "users"
   add_foreign_key "products", "users", column: "creator_id"
 end

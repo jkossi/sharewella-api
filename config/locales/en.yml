@@ -1,2 +1,4 @@
 ---
 en:
+  messaging:
+    confirmation_code: Your confirmation code is %{code}. This is valid for 10 minutes.

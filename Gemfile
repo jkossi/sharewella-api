@@ -12,7 +12,7 @@ gem "rails", "~> 7.0.5"
 gem "pg", "~> 1.5.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.6.7"
+gem "puma", "~> 5.6.9"
 
 # Authentication & Authorization with JWT
 gem "devise", "~> 4.9.2"
